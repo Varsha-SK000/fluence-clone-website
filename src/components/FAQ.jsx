@@ -39,7 +39,7 @@ export default function FAQ() {
         <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-12 items-start">
 
           {/* Left panel */}
-          <div style={{ position: "sticky", top: 100 }}>
+          <div >
             <span className="badge">FAQ</span>
 
             <h2 style={{

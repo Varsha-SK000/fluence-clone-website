@@ -107,33 +107,33 @@ export default function HowItWorks() {
               <a href="mailto:someone@yoursite.com" className="btn-outline">Book a Demo</a>
             </div>
           </div>
+        </div>
 
-          <div style={{ position: "relative", minHeight: 380, overflow: "hidden" }}>
-            <img
-              src="https://framerusercontent.com/images/eetEvxW02PAzDQTNZEJNez0XPc.png"
-              alt="Team"
-              style={{ width: "100%", height: "100%", objectFit: "cover", filter: "grayscale(20%)" }}
-            />
+        <div style={{ position: "relative", minHeight: 380, overflow: "hidden" }}>
+          <img
+            src="https://framerusercontent.com/images/eetEvxW02PAzDQTNZEJNez0XPc.png"
+            alt="Team"
+            style={{ width: "100%", height: "100%", objectFit: "cover", filter: "grayscale(20%)" }}
+          />
+          <div style={{
+            position: "absolute", bottom: 24, left: 20, right: 20,
+            background: "rgba(255,255,255,.92)", backdropFilter: "blur(12px)",
+            border: "1px solid rgba(255,255,255,.95)", borderRadius: 10,
+            padding: "14px 18px", display: "flex", alignItems: "center", gap: 12,
+            boxShadow: "0 4px 20px rgba(0,0,0,.08)",
+          }}>
             <div style={{
-              position: "absolute", bottom: 24, left: 20, right: 20,
-              background: "rgba(255,255,255,.92)", backdropFilter: "blur(12px)",
-              border: "1px solid rgba(255,255,255,.95)", borderRadius: 10,
-              padding: "14px 18px", display: "flex", alignItems: "center", gap: 12,
-              boxShadow: "0 4px 20px rgba(0,0,0,.08)",
+              width: 34, height: 34, borderRadius: "50%",
+              background: "linear-gradient(135deg,#c084fc,#7c3aed)",
+              display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
             }}>
-              <div style={{
-                width: 34, height: 34, borderRadius: "50%",
-                background: "linear-gradient(135deg,#c084fc,#7c3aed)",
-                display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
-              }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5">
-                  <path d="M20 6L9 17l-5-5" />
-                </svg>
-              </div>
-              <span style={{ fontFamily: "'Bricolage Grotesque', sans-serif", fontWeight: 600, fontSize: 15, color: "#0a0a0a" }}>
-                AI Analysis Complete
-              </span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5">
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
             </div>
+            <span style={{ fontFamily: "'Bricolage Grotesque', sans-serif", fontWeight: 600, fontSize: 15, color: "#0a0a0a" }}>
+              AI Analysis Complete
+            </span>
           </div>
         </div>
 

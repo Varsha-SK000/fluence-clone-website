@@ -83,11 +83,6 @@ function FeatureRow({ row, index }) {
       >
         {/* Text */}
         <div style={{ padding: "60px 56px", direction: "ltr", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-          {row.showTag && (
-            <div style={{ marginBottom: 16 }}>
-              <span className="badge">Product Overview</span>
-            </div>
-          )}
           <h3 style={{
             fontFamily: "'Bricolage Grotesque', sans-serif",
             fontSize: "clamp(22px, 2.8vw, 34px)",

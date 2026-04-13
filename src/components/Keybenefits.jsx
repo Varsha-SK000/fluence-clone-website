@@ -15,8 +15,14 @@ const rightBenefits = [
 function CheckIcon() {
   return (
     <div style={{
-      width: 28, height: 28, borderRadius: "50%", background: "#0a0a0a",
-      display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
+      width: 28,
+      height: 28,
+      borderRadius: "50%",
+      background: "#0a0a0a",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      flexShrink: 0,
     }}>
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3">
         <path d="M20 6L9 17l-5-5" />
@@ -34,8 +40,12 @@ function BenefitItem({ title, desc, index }) {
       transition={{ duration: 0.5, delay: index * 0.1 }}
     >
       <CheckIcon />
-      <div style={{ fontWeight: 700, marginTop: 10, color: "#111", fontSize: 15 }}>{title}</div>
-      <p style={{ fontSize: 13.5, color: "#777", lineHeight: 1.65, marginTop: 4 }}>{desc}</p>
+      <div style={{ fontWeight: 700, marginTop: 10, color: "#111", fontSize: 15 }}>
+        {title}
+      </div>
+      <p style={{ fontSize: 13.5, color: "#777", lineHeight: 1.65, marginTop: 4 }}>
+        {desc}
+      </p>
     </motion.div>
   );
 }
@@ -44,7 +54,7 @@ function SecurityCard() {
   const certs = ["SOC 2", "GDPR", "HIPAA"];
 
   return (
-    <div
+    <div className="security-card"
       style={{
         border: "1px solid rgba(0,0,0,0.06)",
         borderRadius: 16,
@@ -70,15 +80,15 @@ function SecurityCard() {
 
       {/* MAIN ROW */}
       <div
+        className="security-card-main"
         style={{
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
           gap: 20,
-          position: "relative",
         }}
       >
-        {/* LEFT SIDE (TEXT) */}
+        {/* TEXT */}
         <div style={{ maxWidth: 420 }}>
           <h4
             style={{
@@ -103,8 +113,9 @@ function SecurityCard() {
           </p>
         </div>
 
-        {/* RIGHT SIDE (CIRCLES) */}
+        {/* CIRCLES */}
         <div
+          className="security-circles"
           style={{
             display: "flex",
             gap: 14,
@@ -120,8 +131,7 @@ function SecurityCard() {
                 width: 66,
                 height: 66,
                 borderRadius: "50%",
-                background:
-                  "linear-gradient(145deg, #a855f7, #f472b6)",
+                background: "linear-gradient(145deg, #a855f7, #f472b6)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -153,12 +163,15 @@ export default function KeyBenefits() {
   return (
     <section style={{ padding: "120px 0", background: "#fff" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px" }}>
+
+        {/* HEADER */}
         <div style={{ textAlign: "center", marginBottom: 70 }}>
           <span className="badge">Key Benefits</span>
           <h2 style={{
             fontFamily: "'Bricolage Grotesque', sans-serif",
             fontSize: "clamp(32px, 4vw, 54px)",
-            fontWeight: 800, marginTop: 14,
+            fontWeight: 800,
+            marginTop: 14,
           }}>
             Why Choose Fluence AI
           </h2>
@@ -168,48 +181,96 @@ export default function KeyBenefits() {
           </p>
         </div>
 
-        <div style={{
-          display: "grid", gridTemplateColumns: "1fr 1.4fr 1fr",
-          border: "1px solid #eee", borderRadius: 10, overflow: "hidden", background: "#fafafa",
-        }} className="kb-grid">
-          {/* Left */}
-          <div style={{ padding: 44, display: "flex", flexDirection: "column", gap: 36 }}>
-            {leftBenefits.map((b, i) => <BenefitItem key={b.title} {...b} index={i} />)}
+        {/* GRID */}
+        <div className="kb-grid">
+
+          {/* LEFT */}
+          <div className="kb-left">
+            {leftBenefits.map((b, i) => (
+              <BenefitItem key={b.title} {...b} index={i} />
+            ))}
           </div>
 
-          {/* Center */}
-          <div
-            style={{
-              background: "linear-gradient(to bottom, #e162ce, #d05e8f, #f472b6)",
-              padding: "12px",
-              borderRadius: "12px",
-              display: "inline-block",
-            }}
-          >
+          {/* CENTER */}
+          <div className="kb-center">
             <img
               src="https://framerusercontent.com/images/5mBsBHgzfspdN9ZQUeC8VPiTixk.png"
               alt="AI Assistant"
-              style={{
-                width: "100%",
-                height: "auto",
-                display: "block",
-                borderRadius: "12px",
-              }}
             />
           </div>
 
-          {/* Right */}
-          <div style={{ padding: 44, display: "flex", flexDirection: "column", gap: 36 }}>
-            {rightBenefits.map((b, i) => <BenefitItem key={b.title} {...b} index={i} />)}
+          {/* RIGHT */}
+          <div className="kb-right">
+            {rightBenefits.map((b, i) => (
+              <BenefitItem key={b.title} {...b} index={i} />
+            ))}
           </div>
+
         </div>
 
         <SecurityCard />
+
       </div>
 
+      {/* 🎯 MOBILE RESPONSIVE STYLES */}
       <style>{`
+        .kb-grid {
+          display: grid;
+          grid-template-columns: 1fr 1.4fr 1fr;
+          border: 1px solid #eee;
+          border-radius: 10px;
+          overflow: hidden;
+          background: #fafafa;
+        }
+
+        .kb-left, .kb-right {
+          padding: 44px;
+          display: flex;
+          flex-direction: column;
+          gap: 36px;
+        }
+
+        .kb-center {
+          background: linear-gradient(to bottom, #e162ce, #d05e8f, #f472b6);
+          padding: 12px;
+          border-radius: 12px;
+          display: flex;
+          align-items: center;
+        }
+
+        .kb-center img {
+          width: 100%;
+          border-radius: 12px;
+        }
+
+        /* 📱 MOBILE ORDER FIX */
         @media (max-width: 900px) {
-          .kb-grid { grid-template-columns: 1fr !important; }
+          .kb-grid {
+            display: flex;
+            flex-direction: column;
+          }
+
+          .kb-center { order: 1; }
+          .kb-left { order: 2; }
+          .kb-right { order: 3; }
+
+          .kb-left, .kb-right {
+            padding: 24px !important;
+          }
+
+          .kb-center {
+            padding: 16px;
+          }
+
+          .security-card-main {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+          }
+
+          .security-circles {
+            justify-content: flex-start !important;
+            width: 100%;
+          }
         }
       `}</style>
     </section>
