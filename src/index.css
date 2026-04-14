@@ -160,3 +160,13 @@ body {
 @media (max-width: 768px) {
   .ticker-item { font-size: 36px; padding: 16px 28px; }
 }
+
+@media (max-width: 768px) {
+  .hiw-top {
+    grid-template-columns: 1fr !important;
+  }
+
+  .hiw-top > div {
+    padding: 28px !important;
+  }
+}

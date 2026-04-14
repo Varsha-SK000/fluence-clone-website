@@ -1,3 +1,6 @@
+import { motion } from "framer-motion";
+import AnimatedButton from "./AnimatedButton";
+
 const steps = [
   {
     title: "Connect Your Data",
@@ -77,68 +80,165 @@ const steps = [
   },
 ];
 
+const ctaItem = {
+  hidden: { opacity: 0, y: 20 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
+
 export default function HowItWorks() {
   return (
-    <section style={{ padding: "100px 0", background: "#f6f6f6" }}>
+    <section style={{ padding: "100px 0" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px" }}>
 
         {/* Hero card */}
-        <div style={{
-          background: "#fff", border: "1px solid #e8e8e8", borderRadius: 10,
-          display: "grid", gridTemplateColumns: "1fr 1fr", overflow: "hidden", marginBottom: 16,
-        }} className="hiw-top">
-          <div style={{ padding: "52px 52px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: 20,
+            alignItems: "stretch",
+          }}
+          className="hiw-top"
+        >
+
+          {/* LEFT CONTAINER */}
+          <div
+            style={{
+              background: "#fff",
+              border: "1px solid #e8e8e8",
+              borderRadius: 10,
+              padding: "52px",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+            }}
+          >
             <div style={{ marginBottom: 20 }}>
               <span className="badge">How It Works</span>
             </div>
-            <h2 style={{
-              fontFamily: "'Bricolage Grotesque', sans-serif", fontWeight: 800,
-              fontSize: "clamp(26px, 3.2vw, 44px)", color: "#0a0a0a",
-              lineHeight: 1.12, letterSpacing: "-0.025em", marginBottom: 16,
-            }}>
+
+            <h2
+              style={{
+                fontFamily: "'Bricolage Grotesque', sans-serif",
+                fontWeight: 800,
+                fontSize: "clamp(26px, 3.2vw, 44px)",
+                color: "#0a0a0a",
+                lineHeight: 1.12,
+                letterSpacing: "-0.025em",
+                marginBottom: 16,
+              }}
+            >
               A Simple 3-Step Process
             </h2>
-            <p style={{ fontSize: 15, color: "#666", lineHeight: 1.72, marginBottom: 32 }}>
+
+            <p
+              style={{
+                fontSize: 15,
+                color: "#666",
+                lineHeight: 1.72,
+                marginBottom: 32,
+              }}
+            >
               Get started quickly and effortlessly with Fluence AI's streamlined 3-step process
               designed to optimize your data workflow.
             </p>
-            <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
-              <a href="/contact" className="btn-dark">Get Started</a>
-              <a href="mailto:someone@yoursite.com" className="btn-outline">Book a Demo</a>
+
+            <motion.div
+              className="flex gap-4 flex-wrap"
+              variants={ctaItem}
+            >
+              <AnimatedButton
+                text="Get Started"
+                href="/contact"
+                className="bg-black border border-white/20 text-white hover:bg-white hover:text-black transition-all duration-300"
+              />
+
+              <AnimatedButton
+                text="Book a Demo"
+                href="mailto:someone@yoursite.com"
+                className="bg-white text-black hover:bg-gray-200 transition-all duration-300"
+              />
+            </motion.div>
+          </div>
+
+          {/* RIGHT CONTAINER */}
+          <div
+            style={{
+              background: "#fff",
+              border: "1px solid #e8e8e8",
+              borderRadius: 10,
+              position: "relative",
+              minHeight: 380,
+              overflow: "hidden",
+            }}
+          >
+            <img
+              src="https://framerusercontent.com/images/eetEvxW02PAzDQTNZEJNez0XPc.png"
+              alt="Team"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                filter: "grayscale(20%)",
+              }}
+            />
+
+            <div
+              style={{
+                position: "absolute",
+                bottom: 24,
+                left: 20,
+                right: 20,
+                background: "rgba(255,255,255,.92)",
+                backdropFilter: "blur(12px)",
+                border: "1px solid rgba(255,255,255,.95)",
+                borderRadius: 10,
+                padding: "14px 18px",
+                display: "flex",
+                alignItems: "center",
+                gap: 12,
+                boxShadow: "0 4px 20px rgba(0,0,0,.08)",
+              }}
+            >
+              <div
+                style={{
+                  width: 34,
+                  height: 34,
+                  borderRadius: "50%",
+                  background: "linear-gradient(135deg,#c084fc,#7c3aed)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexShrink: 0,
+                }}
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+              </div>
+
+              <span
+                style={{
+                  fontFamily: "'Bricolage Grotesque', sans-serif",
+                  fontWeight: 600,
+                  fontSize: 15,
+                  color: "#0a0a0a",
+                }}
+              >
+                AI Analysis Complete
+              </span>
             </div>
           </div>
+
         </div>
 
-        <div style={{ position: "relative", minHeight: 380, overflow: "hidden" }}>
-          <img
-            src="https://framerusercontent.com/images/eetEvxW02PAzDQTNZEJNez0XPc.png"
-            alt="Team"
-            style={{ width: "100%", height: "100%", objectFit: "cover", filter: "grayscale(20%)" }}
-          />
-          <div style={{
-            position: "absolute", bottom: 24, left: 20, right: 20,
-            background: "rgba(255,255,255,.92)", backdropFilter: "blur(12px)",
-            border: "1px solid rgba(255,255,255,.95)", borderRadius: 10,
-            padding: "14px 18px", display: "flex", alignItems: "center", gap: 12,
-            boxShadow: "0 4px 20px rgba(0,0,0,.08)",
-          }}>
-            <div style={{
-              width: 34, height: 34, borderRadius: "50%",
-              background: "linear-gradient(135deg,#c084fc,#7c3aed)",
-              display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
-            }}>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5">
-                <path d="M20 6L9 17l-5-5" />
-              </svg>
-            </div>
-            <span style={{ fontFamily: "'Bricolage Grotesque', sans-serif", fontWeight: 600, fontSize: 15, color: "#0a0a0a" }}>
-              AI Analysis Complete
-            </span>
-          </div>
-        </div>
-
+        <br />
         {/* 3 step cards */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 16 }} className="hiw-steps">
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "clamp(24px, 4vw, 60px)", alignItems: "stretch", }} className="hiw-steps">
           {steps.map((step, i) => (
             <div
               key={i}
@@ -157,13 +257,6 @@ export default function HowItWorks() {
             >
               <div style={{ height: 210, background: step.bg }}>{step.visual}</div>
               <div style={{ padding: "22px 26px 28px" }}>
-                <div style={{
-                  width: 28, height: 28, borderRadius: 8, background: "#f0f0f0",
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  fontSize: 12, fontWeight: 700, color: "#555", marginBottom: 12,
-                }}>
-                  0{i + 1}
-                </div>
                 <h4 style={{
                   fontFamily: "'Bricolage Grotesque', sans-serif", fontWeight: 700,
                   fontSize: 20, color: "#0a0a0a", marginBottom: 8,
