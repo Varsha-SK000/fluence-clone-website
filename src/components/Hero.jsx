@@ -40,20 +40,21 @@ const word = {
   },
 };
 
-const containerVariant = {
+const containerVariants = {
   hidden: {},
-  visible: {
+  show: {
     transition: {
-      staggerChildren: 1,
+      staggerChildren: 0.25,
     },
   },
 };
 
-const messageVariant = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
+const messageVariants = {
+  hidden: { opacity: 0, y: 20, scale: 0.98 },
+  show: {
     opacity: 1,
     y: 0,
+    scale: 1,
     transition: {
       duration: 0.5,
       ease: "easeOut",
@@ -87,7 +88,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-br from-purple-400/20 via-pink-300/10 to-yellow-200/10 pointer-events-none" />
 
         {/* HERO TEXT */}
-        <div className="relative z-10 pt-20 pb-4 max-w-3xl w-full px-4 text-center">
+        <div className="relative z-10 pt-20 pb-0 max-w-3xl w-full px-4 text-center">
 
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -158,45 +159,73 @@ export default function Hero() {
         </div>
 
         {/* CHAT SECTION (UNCHANGED) */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="relative z-10 w-full max-w-5xl px-4 pb-10"
-        >
-          <div className="relative backdrop-blur-xl bg-white/35 border border-white/40 rounded-3xl p-4 sm:p-6 shadow-2xl overflow-hidden">
+        <div className="relative z-10 w-full max-w-6xl px-4 py-8 mx-auto">
+          {/* 🔲 SINGLE CONTAINER */}
+          <div className="relative backdrop-blur-xl bg-white/40 border border-white/40 rounded-3xl p-6 shadow-xl overflow-hidden">
 
-            <div className="hidden sm:block">
-              <FloatingShape src="https://framerusercontent.com/images/mNO89ys2gWfzwt1uvhnoJyIgupY.png" className="-left-8 bottom-4 w-20 md:w-28" />
-              <FloatingShape src="https://framerusercontent.com/images/B0V3gNPI0mHpDUqWHR41pDhDfMs.png" className="-right-8 top-2 w-24 md:w-32" delay={1.2} />
-            </div>
+            {/* 🟣 Floating Shapes INSIDE */}
+            <FloatingShape
+              src="https://framerusercontent.com/images/mNO89ys2gWfzwt1uvhnoJyIgupY.png"
+              className="-left-1  bottom-40 w-32"
+            />
+            <FloatingShape
+              src="https://framerusercontent.com/images/B0V3gNPI0mHpDUqWHR41pDhDfMs.png"
+              className="-right-1 top-20 w-38"
+              delay={1}
+            />
 
-            {/* Chat */}
-            <div className="relative z-10 max-w-xl mx-auto mb-5">
-              <div className="bg-white/45 backdrop-blur-xl border border-white/40 rounded-3xl p-4 sm:p-5 shadow-xl">
+            {/* 💬 Messages */}
+            <div className="bg-white/80 rounded-xl p-4 relative z-10 max-w-2xl px-6 py-8 mx-auto mb-6">
 
+              <div className="relative z-10 w-full max-w-2xl px-6 py-8 mx-auto mb-6">
+
+                {/* 💬 Messages Wrapper */}
                 <motion.div
-                  variants={containerVariant}
+                  className="flex flex-col gap-5"
+                  variants={containerVariants}
                   initial="hidden"
-                  animate="visible"
-                  className="flex flex-col gap-4"
+                  whileInView="show"
+                  viewport={{ once: true, amount: 0.3 }}
                 >
 
-                  <motion.div variants={messageVariant} className="flex justify-end">
-                    <div className="flex items-end gap-2 max-w-[85%] sm:max-w-xs">
-                      <div className="bg-white px-3 py-2 sm:px-4 sm:py-3 rounded-2xl rounded-br-sm text-sm shadow-sm">
-                        Hey, I need help sending out a campaign.
+                  {/* USER MESSAGE 1 */}
+                  <motion.div variants={messageVariants} className="flex justify-end">
+                    <div className="flex items-end gap-2 max-w-xs">
+                      <div className="bg-white px-4 py-3 rounded-2xl text-sm shadow">
+                        Hey, I need help sending out a campaign to all new subscribers.
+                      </div>
+                      <img
+                        src="https://framerusercontent.com/images/8xPKr1A96oFIM4WCr0MnFTRZZdg.png"
+                        alt="user"
+                        className="w-8 h-8 rounded-md object-cover"
+                      />
+                    </div>
+                  </motion.div>
+
+                  {/* AI MESSAGE */}
+                  <motion.div variants={messageVariants} className="flex justify-start">
+                    <div className="flex items-start gap-2 max-w-xs">
+                      <div className="w-8 h-8 bg-black text-white flex items-center justify-center rounded-md text-xs">
+                        ✦
+                      </div>
+                      <div className="bg-white px-4 py-3 rounded-2xl text-sm shadow">
+                        Of course! I’ll prepare a personalized campaign for your new subscribers.
+                        Would you like me to schedule it now or review it first?
                       </div>
                     </div>
                   </motion.div>
 
-                  <motion.div variants={messageVariant} className="flex justify-start">
-                    <div className="flex items-start gap-2 max-w-[85%] sm:max-w-xs">
-                      <div className="w-7 h-7 sm:w-8 sm:h-8 bg-black text-white flex items-center justify-center rounded-lg text-xs">
-                        ✦
+                  {/* USER MESSAGE 2 */}
+                  <motion.div variants={messageVariants} className="flex justify-end">
+                    <div className="flex items-end gap-2 max-w-xs">
+                      <div className="bg-white px-4 py-3 rounded-2xl text-sm shadow">
+                        Yes, you can schedule it.
                       </div>
-                      <div className="bg-white px-3 py-2 sm:px-4 sm:py-3 rounded-2xl text-sm shadow-sm">
-                        Of course! I'll prepare a campaign...
-                      </div>
+                      <img
+                        src="https://framerusercontent.com/images/8xPKr1A96oFIM4WCr0MnFTRZZdg.png"
+                        alt="user"
+                        className="w-8 h-8 rounded-md object-cover"
+                      />
                     </div>
                   </motion.div>
 
@@ -204,23 +233,51 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Input */}
-            <div className="bg-white/85 backdrop-blur-sm rounded-2xl p-3 sm:p-4 max-w-xl mx-auto">
+
+            {/* ✏️ Input Section */}
+            <div className="bg-white/80 rounded-xl p-4 relative z-10 max-w-2xl px-6 py-8 mx-auto mb-6">
+
+              {/* Top Buttons */}
+              <div className="flex gap-2 mb-3">
+                <span className="text-xs bg-white px-3 py-1 rounded-full border">
+                  GPT 4.5
+                </span>
+                <span className="text-xs bg-white px-3 py-1 rounded-full border">
+                  Search
+                </span>
+              </div>
+
+              {/* Input */}
               <input
                 type="text"
                 placeholder="Ask anything ..."
-                className="w-full outline-none bg-transparent mb-3 text-sm text-gray-700"
+                className="w-full outline-none bg-transparent mb-4 text-sm"
               />
 
+              {/* Actions */}
+              <div className="flex flex-wrap gap-2 mb-3">
+                {["Create Workflow", "Setup Bot", "Schedule Message"].map((item, i) => (
+                  <div
+                    key={i}
+                    className="flex items-center gap-2 text-xs px-3 py-1 bg-white rounded-full border shadow-sm"
+                  >
+                    <SparkleIcon />
+                    {item}
+                  </div>
+                ))}
+              </div>
+
+              {/* Send */}
               <div className="flex justify-end">
-                <button className="w-9 h-9 rounded-full bg-gradient-to-tr from-purple-500 to-pink-500 flex items-center justify-center text-white">
+                <button className="w-10 h-10 rounded-full bg-gradient-to-tr from-purple-500 to-pink-500 flex items-center justify-center">
                   ➤
                 </button>
               </div>
+
             </div>
 
           </div>
-        </motion.div>
+        </div>
 
       </div>
     </section>
