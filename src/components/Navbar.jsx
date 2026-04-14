@@ -18,6 +18,8 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [bounce, setBounce] = useState(false);
 
+  const [isMobile, setIsMobile] = useState(false);
+
   const { scrollY } = useScroll();
   const velocity = useVelocity(scrollY);
   const smoothVelocity = useSpring(velocity, { damping: 50, stiffness: 400 });
@@ -28,18 +30,27 @@ export default function Navbar() {
   const location = useLocation();
   const isHome = location.pathname === "/";
 
+  // ✅ Detect mobile screen
+  useEffect(() => {
+    const checkScreen = () => setIsMobile(window.innerWidth < 768);
+    checkScreen();
+
+    window.addEventListener("resize", checkScreen);
+    return () => window.removeEventListener("resize", checkScreen);
+  }, []);
+
   useEffect(() => {
     const move = (e) => setCursor({ x: e.clientX, y: e.clientY });
     window.addEventListener("mousemove", move);
     return () => window.removeEventListener("mousemove", move);
   }, []);
 
-  // ❌ FIX: Freeze scroll effects when menu open
+  // Freeze scroll effects when menu open
   useEffect(() => {
     let timeout;
 
     return scrollY.on("change", (y) => {
-      if (open) return; // 🚨 IMPORTANT FIX
+      if (open) return;
 
       setScrolled(y > 40);
 
@@ -51,7 +62,7 @@ export default function Navbar() {
     });
   }, [scrollY, open]);
 
-  // ❌ FIX: Lock body scroll when menu open
+  // Lock body scroll when menu open
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "auto";
   }, [open]);
@@ -118,20 +129,24 @@ export default function Navbar() {
       <header className="fixed top-6 py-2 px-6 left-0 w-full z-50 flex justify-center">
         <motion.div
           animate={{
-            height: open ? 62 : scrolled ? 54 : 62,
-            width: open ? "92%" : scrolled ? "52%" : "92%",
-            scale: open ? 1 : scrolled ? 0.93 : 1,
-            borderRadius: open ? 12 : scrolled ? 10 : 12,
-            y: open ? 0 : bounce ? -3 : 0,
+            height: 62,
+            width: isMobile ? "92%" : open ? "92%" : scrolled ? "52%" : "92%",
+            scale: isMobile ? 1 : open ? 1 : scrolled ? 0.93 : 1,
+            borderRadius: 12,
+            y: open ? 0 : !isMobile && bounce ? -3 : 0,
           }}
           transition={{ type: "spring", stiffness: 220, damping: 22 }}
           style={{
-            backdropFilter: open
+            backdropFilter: isMobile
               ? "blur(14px)"
-              : `blur(${blurVal.get()}px)`,
-            WebkitBackdropFilter: open
+              : open
+                ? "blur(14px)"
+                : `blur(${blurVal.get()}px)`,
+            WebkitBackdropFilter: isMobile
               ? "blur(14px)"
-              : `blur(${blurVal.get()}px)`,
+              : open
+                ? "blur(14px)"
+                : `blur(${blurVal.get()}px)`,
             backgroundColor: "rgba(225, 215, 237, 0.65)",
             border: "1px solid rgba(255,255,255,0.28)",
             maxWidth: "1240px",
@@ -151,7 +166,7 @@ export default function Navbar() {
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-7 text-sm font-medium z-10">
-            {navItems.map((item, i) => (
+            {navItems.map((item) => (
               <div key={item} className="relative py-1">
                 <a
                   href={`#${item}`}
