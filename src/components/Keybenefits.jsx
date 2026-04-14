@@ -230,25 +230,27 @@ export default function KeyBenefits() {
           gap: 36px;
         }
 
-        .kb-center {
-          background: linear-gradient(to bottom, #e162ce, #d05e8f, #f472b6);
-          padding: 12px;
-          border-radius: 12px;
-          display: flex;
-          align-items: center;
-        }
+         .kb-center {
+      background: linear-gradient(135deg, #F6F5F6, #e33354, #FF98E5, #591091);
+      padding: 24px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-        .kb-center img {
-          width: 100%;
-          border-radius: 12px;
-        }
+    .kb-center img {
+      width: 100%;
+      border-radius: 12px;
+    }
 
-        /* 📱 MOBILE ORDER FIX */
-        @media (max-width: 900px) {
-          .kb-grid {
-            display: flex;
-            flex-direction: column;
-          }
+    /* 📱 MOBILE RESPONSIVE */
+    @media (max-width: 900px) {
+      .kb-grid {
+        display: flex;
+        flex-direction: column;
+        padding: 12px;
+      }
 
           .kb-center { order: 1; }
           .kb-left { order: 2; }
