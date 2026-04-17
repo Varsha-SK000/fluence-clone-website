@@ -236,8 +236,8 @@ export default function Pricing() {
               <div style={{ marginBottom: 22 }}>
                 <span
                   style={{
-                    fontSize: 46,
-                    fontWeight: 800,
+                    fontSize: 36,
+                    fontWeight: 400,
                     fontFamily: "'Bricolage Grotesque', sans-serif",
                     color: "#0a0a0a",
                   }}

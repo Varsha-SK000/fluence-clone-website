@@ -148,7 +148,7 @@ export default function HowItWorks() {
             </p>
 
             <motion.div
-              className="flex gap-4 flex-wrap"
+              className="flex gap-4 flex-wrap  hiw-buttons"
               variants={ctaItem}
             >
               <AnimatedButton
@@ -271,11 +271,20 @@ export default function HowItWorks() {
       </div>
 
       <style>{`
-        @media (max-width: 768px) {
-          .hiw-top, .hiw-steps { grid-template-columns: 1fr !important; }
-          .hiw-top > div:first-child { padding: 36px 28px !important; }
-        }
-      `}</style>
+  @media (max-width: 768px) {
+    .hiw-top, .hiw-steps { grid-template-columns: 1fr !important; }
+    .hiw-top > div:first-child { padding: 36px 28px !important; }
+
+    /* 🔥 Button full width + bigger size */
+    .hiw-buttons a {
+      width: 100%;
+      justify-content: center;
+      padding: 14px 18px !important;
+      font-size: 15px !important;
+      border-radius: 10px;
+    }
+  }
+`}</style>
     </section>
   );
 }

@@ -42,25 +42,24 @@ const ctaItem = {
 };
 
 export default function FluenceFooter() {
-
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <footer className="relative font-inter bg-black text-white rounded-xl mx-4 mb-4 px-5 md:px-10 py-14 md:py-16">
+    <footer className="relative font-inter bg-black text-white rounded-xl mx-4 mb-4 px-5 md:px-45 py-14 md:py-16">
       {/* Gradient */}
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_80%_10%,rgba(120,70,255,0.14),transparent_50%),radial-gradient(circle_at_10%_90%,rgba(255,0,150,0.07),transparent_55%)]" />
 
       {/* Watermark FIX (no cutting) */}
-      <div className="absolute left-4px-6 md:px-12 py-14 md:py-16 bottom-[-10px] text-[14vw] font-black opacity-[0.03] whitespace-nowrap pointer-events-none">
+      <div className="absolute left-4px-6 md:px-10 py-14 md:py-16 bottom-[-10px] text-[14vw] font-black opacity-[0.03] whitespace-nowrap pointer-events-none">
         Fluence Ai
       </div>
 
-      {/* Cube */}
-      <div className="absolute top-10 right-10 hidden lg:block">
+      {/* Cube (FIXED for mobile) */}
+      <div className="absolute top-15 right-30 sm:right-30 md:right-30">
         <motion.img
           src="https://framerusercontent.com/images/3D34QUQAuR6kMLNTtzm7mEgCmuE.png"
-          className="w-40 h-40 md:w-56 md:h-56"
+          className="w-60 h-60 sm:w-60 sm:h-60 md:w-60 md:h-60"
           animate={{ rotate: 360 }}
           transition={{ repeat: Infinity, duration: 14, ease: "linear" }}
         />
@@ -110,12 +109,12 @@ export default function FluenceFooter() {
       </section>
 
       {/* Divider */}
-      <div className="h-px bg-white/10 mb-12" />
+      <div className="h-px bg-white/10 mb-10" />
 
       {/* Grid FIX */}
-      <section className="relative z-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 text-left">
+      <section className="relative z-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-6 md:gap-x-4 text-left">
         {/* Brand */}
-        <div>
+        <div className="mb-8 md:mb-0">
           <div className="flex items-start gap-3 mb-4">
             <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
               ✦
@@ -146,7 +145,7 @@ export default function FluenceFooter() {
         </div>
 
         {/* Links */}
-        <div>
+        <div className="mb-8 md:mb-0">
           <h4 className="mb-4 text-xs uppercase tracking-widest text-white md:text-white">
             Use Links
           </h4>

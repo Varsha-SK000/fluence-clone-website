@@ -30,24 +30,24 @@ export default function Contact() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
                 style={{
-                  fontFamily: "'Bricolage Grotesque', sans-serif",
-                  fontSize: "clamp(28px, 4vw, 48px)", fontWeight: 800,
+                  fontSize: "clamp(28px, 4vw, 48px)", fontWeight: 400,
                   marginTop: 20, color: "#0a0a0a", letterSpacing: "-0.025em", lineHeight: 1.1,
                 }}
               >
                 Get in touch with our team
               </motion.h2>
-              <p style={{ marginTop: 14, fontSize: 16, color: "#777", lineHeight: 1.65 }}>
-                We'd love to hear from you. Send us a message and we'll get back to you within 24 hours.
-              </p>
             </div>
 
             {/* Container */}
             <div
               style={{
-                display: "flex", gap: 32, flexWrap: "wrap",
-                background: "#fff", borderRadius: 20, padding: "40px 40px",
-                boxShadow: "0 2px 30px rgba(0,0,0,0.06)", border: "1px solid #f0f0f0",
+                display: "flex",
+                gap: 32,
+                background: "#fff",
+                borderRadius: 20,
+                padding: "40px 40px",
+                boxShadow: "0 2px 30px rgba(0,0,0,0.06)",
+                border: "1px solid #f0f0f0",
               }}
               className="contact-wrap"
             >
@@ -62,7 +62,7 @@ export default function Contact() {
                   Feel free to reach out — we'd love to connect and explore how Fluence AI can help your team.
                 </p>
 
-                <div style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
+                <div style={{ display: "flex", gap: 30, alignItems: "flex-start" }}>
                   <div style={{
                     width: 42, height: 42, background: "#f5f5f5", borderRadius: 10,
                     display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, flexShrink: 0,
@@ -73,16 +73,15 @@ export default function Contact() {
                       hello@fluence.ai
                     </a>
                   </div>
-                </div>
-
-                <div style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
-                  <div style={{
-                    width: 42, height: 42, background: "#f5f5f5", borderRadius: 10,
-                    display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, flexShrink: 0,
-                  }}>💬</div>
-                  <div>
-                    <p style={{ fontWeight: 600, fontSize: 14, marginBottom: 4 }}>Get support</p>
-                    <a href="#" style={{ color: "#666", fontSize: 14, textDecoration: "underline" }}>Chat with us</a>
+                  <div style={{ display: "flex", gap: 5, alignItems: "flex-start" }}>
+                    <div style={{
+                      width: 42, height: 42, background: "#f5f5f5", borderRadius: 10,
+                      display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, flexShrink: 0,
+                    }}>💬</div>
+                    <div>
+                      <p style={{ fontWeight: 600, fontSize: 14, marginBottom: 4 }}>Get support</p>
+                      <a href="#" style={{ color: "#666", fontSize: 14, textDecoration: "underline" }}>Chat with us</a>
+                    </div>
                   </div>
                 </div>
 
@@ -149,15 +148,41 @@ export default function Contact() {
                   }}
                 >
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }} className="form-row">
-                    <input className="input" name="firstName" placeholder="First name" value={form.firstName} onChange={handle} required />
-                    <input className="input" name="lastName" placeholder="Last name" value={form.lastName} onChange={handle} required />
+                    <div>
+                      <label className="form-label">First name</label>
+                      <input className="input" name="firstName" placeholder="First name" value={form.firstName} onChange={handle} required />
+                    </div>
+
+                    <div>
+                      <label className="form-label">Last name</label>
+                      <input className="input" name="lastName" placeholder="Last name" value={form.lastName} onChange={handle} required />
+                    </div>
                   </div>
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }} className="form-row">
-                    <input className="input" type="email" name="email" placeholder="Your email" value={form.email} onChange={handle} required />
-                    <input className="input" type="tel" name="phone" placeholder="Your phone" value={form.phone} onChange={handle} />
+                    <div>
+                      <label className="form-label">Email</label>
+                      <input className="input" type="email" name="email" placeholder="Your email" value={form.email} onChange={handle} required />
+                    </div>
+
+                    <div>
+                      <label className="form-label">Phone</label>
+                      <input className="input" type="tel" name="phone" placeholder="Your phone" value={form.phone} onChange={handle} />
+                    </div>
                   </div>
-                  <textarea className="input" name="message" rows="5" placeholder="Write your message" value={form.message} onChange={handle} required style={{ resize: "vertical" }} />
-                  <button type="submit" className="submit-btn">Submit Message</button>
+                  <div>
+                    <label className="form-label">Message</label>
+                    <textarea
+                      className="input"
+                      name="message"
+                      rows="5"
+                      placeholder="Write your message"
+                      value={form.message}
+                      onChange={handle}
+                      required
+                      style={{ resize: "vertical" }}
+                    />
+                  </div>
+                  <button type="submit" className="submit-btn">Submit</button>
                   <p style={{ fontSize: 12, color: "#999", textAlign: "center" }}>
                     By submitting you agree to our <span style={{ textDecoration: "underline", cursor: "pointer" }}>Privacy Policy</span>
                   </p>
@@ -171,11 +196,23 @@ export default function Contact() {
       <Footer />
 
       <style>{`
-        @media (max-width: 640px) {
-          .form-row { grid-template-columns: 1fr !important; }
-          .contact-wrap { padding: 24px !important; }
-        }
-      `}</style>
+     @media (max-width: 640px) {
+      .form-row { grid-template-columns: 1fr !important; }
+      .contact-wrap { 
+      padding: 24px !important;
+      flex-direction: column-reverse !important;
+      gap: 20px !important;
+    }
+  }
+
+  .form-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 6px;
+  }
+`}</style>
     </div>
   );
 }

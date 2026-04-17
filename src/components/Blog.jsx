@@ -147,11 +147,6 @@ export default function Blog() {
             transition: 0.3s;
           }
 
-          .blog-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 18px 44px rgba(0,0,0,0.10);
-          }
-
           /* IMAGE */
           .blog-img-wrapper {
             position: relative;
