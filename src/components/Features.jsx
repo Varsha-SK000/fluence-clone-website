@@ -10,8 +10,7 @@ const rows = [
       { icon: "🔌", label: "Flexible API Integrations" },
     ],
     img: "https://framerusercontent.com/images/ZHxn4x0VKrIK8kMprl2U0prVPrs.png",
-    imgRight: true,
-    showTag: true,
+    bg: "linear-gradient(135deg, #AA70FF 0%, #F7D5FF 100%)",
   },
   {
     heading: "Advanced AI-Powered Analytics Tools",
@@ -22,8 +21,7 @@ const rows = [
       { icon: "🤖", label: "AI-Driven Data Metrics" },
     ],
     img: "https://framerusercontent.com/images/yudPladgzJSykTseWh34MLSt0.png",
-    imgRight: false,
-    showTag: false,
+    bg: "linear-gradient(135deg, #9AC5FF 0%, #e9e9e9 100%)",
   },
   {
     heading: "Intelligent Automation Workflow Engine",
@@ -34,8 +32,7 @@ const rows = [
       { icon: "⚡", label: "Smart Trigger Functions" },
     ],
     img: "https://framerusercontent.com/images/N4vCtjk9YHrPSVPINwtdHZjU.png",
-    imgRight: true,
-    showTag: false,
+    bg: "linear-gradient(135deg, #FF8AFD 0%, #e0e0e0 100%)",
   },
 ];
 
@@ -58,7 +55,9 @@ function FeatureRow({ row, index }) {
       current += (target - current) * 0.08;
 
       const speed = 1 + index * 0.3;
-      img.style.transform = `translate3d(0, ${current * 120 * speed}px, 0) scale(${1.1 - index * 0.02})`;
+
+      img.style.transform = `scale(1.02)`;
+
       raf = requestAnimationFrame(animate);
     };
 
@@ -66,64 +65,123 @@ function FeatureRow({ row, index }) {
     return () => cancelAnimationFrame(raf);
   }, [index]);
 
+  // layout rule
+  const isEven = index % 2 === 1;
+
   return (
-    <div style={{ position: "sticky", top: 90, marginBottom: 64 }}>
+    <div
+      style={{
+        marginBottom: 140,
+        position: "relative",
+        zIndex: 10 - index,
+      }}
+    >
       <div
+        className="feature-card"
         style={{
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
           minHeight: 440,
-          borderRadius: 10,
+          borderRadius: 12,
           overflow: "hidden",
-          background: "#fafafa",
           boxShadow: "0 20px 60px rgba(0,0,0,0.07)",
-          direction: row.imgRight ? "rtl" : "ltr",
+          background: "#fff",
+          transform: `translateY(${index * 40}px)`,
+          position: "relative",
+          transition: "transform 0.6s ease",
         }}
-        className="feature-grid-item"
       >
-        {/* Text */}
-        <div style={{ padding: "60px 56px", direction: "ltr", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+
+        {/* TEXT */}
+        <div
+          style={{
+            order: isEven ? 2 : 1,
+            padding: "60px 56px",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+          }}
+        >
           <h3 style={{
-            fontFamily: "'Bricolage Grotesque', sans-serif",
             fontSize: "clamp(22px, 2.8vw, 34px)",
             fontWeight: 800,
-            margin: "0 0 14px",
+            marginBottom: 14,
             color: "#0a0a0a",
-            lineHeight: 1.2,
           }}>
             {row.heading}
           </h3>
-          <p style={{ color: "#666", lineHeight: 1.72, marginBottom: 28, fontSize: 15 }}>{row.desc}</p>
+
+          <p style={{ color: "#666", marginBottom: 28, lineHeight: 1.7 }}>
+            {row.desc}
+          </p>
+
           <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
             {row.points.map((p) => (
-              <div key={p.label} style={{ display: "flex", alignItems: "center", gap: 12 }}>
+              <div key={p.label} style={{ display: "flex", gap: 12, alignItems: "center" }}>
                 <div style={{
-                  width: 36, height: 36, borderRadius: 10, background: "#eee",
-                  display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16,
+                  width: 36,
+                  height: 36,
+                  background: "#eee",
+                  borderRadius: 10,
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
                 }}>
                   {p.icon}
                 </div>
-                <span style={{ fontSize: 14, fontWeight: 500, color: "#333" }}>{p.label}</span>
+                <span style={{ fontSize: 14, fontWeight: 500 }}>
+                  {p.label}
+                </span>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Image */}
-        <div style={{ overflow: "hidden", direction: "ltr" }} className="image">
+        {/* IMAGE SIDE ONLY BG */}
+        <div
+          style={{
+            order: isEven ? 1 : 2,
+            background: row.bg,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            overflow: "visible",
+            position: "sticky",
+            top: 80,
+            padding: "40px",
+            boxSizing: "border-box",
+          }}
+        >
           <img
             ref={imgRef}
             src={row.img}
-            alt={row.heading}
-            style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", willChange: "transform" }}
+            alt=""
+            style={{
+              width: "100%",
+              maxWidth: "420px",
+              objectFit: "contain",
+              willChange: "transform",
+              borderRadius: "12px",
+            }}
           />
         </div>
       </div>
 
+      {/* MOBILE FIX */}
       <style>{`
         @media (max-width: 768px) {
-          .feature-grid-item { grid-template-columns: 1fr !important; direction: ltr !important; }
-          .feature-grid-item > div:first-child { padding: 36px 24px !important; }
+          .feature-card {
+            grid-template-columns: 1fr !important;
+          }
+
+          .feature-card > div {
+            order: unset !important;
+          }
+
+          .feature-card img {
+            width: 100% !important;
+            margin-top: 20px;
+          }
         }
       `}</style>
     </div>
@@ -172,3 +230,18 @@ export default function ProductOverview() {
     </section>
   );
 }
+<style>{`
+@media (max-width: 768px) {
+  .feature-card {
+    grid-template-columns: 1fr !important;
+  }
+
+  .feature-card > div:nth-child(1) {
+    order: 2 !important;
+  }
+
+  .feature-card > div:nth-child(2) {
+    order: 1 !important;
+  }
+}
+`}</style>
