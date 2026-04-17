@@ -5,76 +5,80 @@ const steps = [
   {
     title: "Connect Your Data",
     desc: "Effortlessly integrate data from various sources into a unified system for seamless operations.",
-    bg: "linear-gradient(150deg,#fde8d8 0%,#fcd4e0 50%,#e9d5ff 100%)",
     visual: (
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100%" }}>
-        <div style={{
-          background: "rgba(255,255,255,.75)", backdropFilter: "blur(10px)",
-          border: "1px solid rgba(255,255,255,.9)", borderRadius: 16,
-          padding: "14px 22px", display: "flex", alignItems: "center", gap: 12,
-          boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
-        }}>
-          <div style={{
-            width: 34, height: 34, borderRadius: "50%", background: "rgba(255,255,255,.9)",
-            display: "flex", alignItems: "center", justifyContent: "center",
-          }}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#a855f7" />
-            </svg>
-          </div>
-          <span style={{ fontSize: 14, fontWeight: 600, color: "#1a1a1a" }}>Learning your workflow</span>
-        </div>
+      <div
+        style={{
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          overflow: "hidden",
+          borderRadius: 16,
+        }}
+      >
+        <img
+          src="https://framerusercontent.com/images/VLnlQRrUsqwRQQiox0h47mo.png"
+          alt="step 1"
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }}
+        />
       </div>
     ),
   },
+
   {
     title: "Analyze and Optimize",
     desc: "Use AI to uncover valuable insights, detect patterns, and improve your overall performance.",
-    bg: "linear-gradient(150deg,#bfdbfe 0%,#93c5fd 40%,#c4b5fd 100%)",
     visual: (
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100%", gap: 14 }}>
-        <div style={{ fontFamily: "'Bricolage Grotesque', sans-serif", fontWeight: 800, fontSize: 26, color: "#1e1e1e" }}>Pass Rate</div>
-        <div style={{ fontSize: 13, color: "#555" }}>100% completed</div>
-        <div style={{ width: 180, height: 8, background: "rgba(255,255,255,.4)", borderRadius: 4, overflow: "hidden" }}>
-          <div style={{ width: "100%", height: "100%", background: "linear-gradient(90deg,#7c3aed,#a855f7)", borderRadius: 4 }} />
-        </div>
-        <div style={{ fontSize: 12, color: "#6d28d9", fontWeight: 600 }}>↑ 24% vs last month</div>
+      <div
+        style={{
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          overflow: "hidden",
+          borderRadius: 16,
+        }}
+      >
+        <img
+          src="https://framerusercontent.com/images/PLXsSSAuDhFY3nTykAyD7DpKi8.png"
+          alt="step 2"
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }}
+        />
       </div>
     ),
   },
+
   {
     title: "Let AI Work",
     desc: "Streamline repetitive tasks and enhance productivity with fully automated AI-driven workflows.",
-    bg: "linear-gradient(150deg,#f5d0fe 0%,#c084fc 50%,#818cf8 100%)",
     visual: (
-      <div style={{ padding: "18px 20px", height: "100%", display: "flex", flexDirection: "column", gap: 10 }}>
-        <div style={{ fontSize: 12, color: "rgba(255,255,255,.8)", fontWeight: 600 }}>Inbox</div>
-        <div style={{ background: "rgba(255,255,255,.9)", borderRadius: 10, padding: "12px 14px" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
-            <div style={{
-              width: 20, height: 20, borderRadius: 6, background: "#0a0a0a",
-              display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
-            }}>
-              <span style={{ color: "#a78bfa", fontSize: 10 }}>✦</span>
-            </div>
-            <span style={{ fontSize: 12, fontWeight: 700, color: "#0a0a0a" }}>Co-Pilot</span>
-          </div>
-          <div style={{ fontSize: 12, color: "#555" }}>I've processed the order for you</div>
-          <div style={{
-            marginTop: 8, background: "linear-gradient(135deg,#c084fc,#7c3aed)", borderRadius: 8,
-            padding: "5px 11px", fontSize: 11, fontWeight: 600, color: "#fff",
-            display: "inline-flex", alignItems: "center", gap: 5,
-          }}>✦ Review order</div>
-        </div>
-        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-          <img
-            src="https://framerusercontent.com/images/yIREXkwAthEgTDhWj0Imj3yZ9JA.png"
-            alt="u" style={{ width: 24, height: 24, borderRadius: "50%", objectFit: "cover" }}
-          />
-          <div style={{ background: "rgba(255,255,255,.88)", borderRadius: 10, padding: "6px 12px", fontSize: 12, color: "#333" }}>
-            Thanks for handling that!
-          </div>
-        </div>
+      <div
+        style={{
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          overflow: "hidden",
+          borderRadius: 16,
+        }}
+      >
+        <img
+          src="https://framerusercontent.com/images/uup7dORC5yPjXdJ4q20qgl3IGI.png"
+          alt="step 3"
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }}
+        />
       </div>
     ),
   },
@@ -160,7 +164,7 @@ export default function HowItWorks() {
               <AnimatedButton
                 text="Book a Demo"
                 href="mailto:someone@yoursite.com"
-                className="bg-white text-black hover:bg-gray-200 transition-all duration-300"
+                className="bg-transparent text-black border border-black/20 hover:bg-transparent hover:text-black"
               />
             </motion.div>
           </div>
@@ -174,6 +178,7 @@ export default function HowItWorks() {
               position: "relative",
               minHeight: 380,
               overflow: "hidden",
+              padding: 6,
             }}
           >
             <img
@@ -186,52 +191,6 @@ export default function HowItWorks() {
                 filter: "grayscale(20%)",
               }}
             />
-
-            <div
-              style={{
-                position: "absolute",
-                bottom: 24,
-                left: 20,
-                right: 20,
-                background: "rgba(255,255,255,.92)",
-                backdropFilter: "blur(12px)",
-                border: "1px solid rgba(255,255,255,.95)",
-                borderRadius: 10,
-                padding: "14px 18px",
-                display: "flex",
-                alignItems: "center",
-                gap: 12,
-                boxShadow: "0 4px 20px rgba(0,0,0,.08)",
-              }}
-            >
-              <div
-                style={{
-                  width: 34,
-                  height: 34,
-                  borderRadius: "50%",
-                  background: "linear-gradient(135deg,#c084fc,#7c3aed)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexShrink: 0,
-                }}
-              >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5">
-                  <path d="M20 6L9 17l-5-5" />
-                </svg>
-              </div>
-
-              <span
-                style={{
-                  fontFamily: "'Bricolage Grotesque', sans-serif",
-                  fontWeight: 600,
-                  fontSize: 15,
-                  color: "#0a0a0a",
-                }}
-              >
-                AI Analysis Complete
-              </span>
-            </div>
           </div>
 
         </div>
@@ -244,7 +203,7 @@ export default function HowItWorks() {
               key={i}
               style={{
                 background: "#fff", border: "1px solid #e8e8e8", borderRadius: 10,
-                overflow: "hidden", transition: "transform .22s, box-shadow .22s",
+                overflow: "hidden", transition: "transform .22s, box-shadow .22s", padding: "2px 6px 8px", display: "flex", flexDirection: "column",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "translateY(-4px)";

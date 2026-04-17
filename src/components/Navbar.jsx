@@ -129,8 +129,8 @@ export default function Navbar() {
       <header className="fixed top-6 py-2 px-6 left-0 w-full z-50 flex justify-center">
         <motion.div
           animate={{
-            height: 62,
-            width: isMobile ? "92%" : open ? "92%" : scrolled ? "52%" : "92%",
+            height: 50,
+            width: isMobile ? "92%" : open ? "92%" : scrolled ? "92%" : "92%",
             scale: isMobile ? 1 : open ? 1 : scrolled ? 0.93 : 1,
             borderRadius: 12,
             y: open ? 0 : !isMobile && bounce ? -3 : 0,
@@ -183,7 +183,7 @@ export default function Navbar() {
               href="/contact"
               onMouseMove={handleMouseMove}
               onMouseLeave={() => setBtnPos({ x: 0, y: 0 })}
-              className="bg-black text-white px-5 py-2 rounded-xl text-sm font-medium no-underline"
+              className="bg-black text-white px-4 py-2 rounded-xl text-sm font-medium no-underline"
             >
               Contact
             </a>
@@ -218,8 +218,7 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -16, scale: 0.96 }}
               transition={{ type: "spring", stiffness: 300, damping: 28 }}
-              className="fixed top-24 left-1/2 -translate-x-1/2 w-[88%] bg-white rounded-2xl border border-gray-100 shadow-2xl p-6 flex flex-col gap-3 z-50"
-            >
+              className="fixed top-24 left-1/2 -translate-x-1/2 w-[88%] max-w-[940px] bg-white rounded-2xl border border-gray-100 shadow-2xl p-6 flex flex-col items-start justify-start gap-3 z-50 overflow-visible">
               {navItems.map((item) => (
                 <a
                   key={item}
