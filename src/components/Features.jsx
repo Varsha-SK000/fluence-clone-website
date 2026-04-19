@@ -13,7 +13,7 @@ const rows = [
     img: 'https://framerusercontent.com/images/ZHxn4x0VKrIK8kMprl2U0prVPrs.png',
     imgRight: true,
     showTag: true,
-    bg: "linear-gradient(135deg, #6457d8, #3d0d55,  #813581, #591091)",
+    glow: "rgba(99, 102, 241, 0.45)",
   },
   {
     heading: 'Advanced AI-Powered Analytics Tools',
@@ -26,7 +26,7 @@ const rows = [
     img: 'https://framerusercontent.com/images/yudPladgzJSykTseWh34MLSt0.png',
     imgRight: false,
     showTag: false,
-    bg: "linear-gradient(135deg, #1387c1, #2e9cc5, #F6F5F6, #2ca9cb)",
+    glow: "rgba(34, 211, 238, 0.40)", // cyan
   },
   {
     heading: 'Intelligent Automation Workflow Engine',
@@ -39,7 +39,7 @@ const rows = [
     img: 'https://framerusercontent.com/images/N4vCtjk9YHrPSVPINwtdHZjU.png',
     imgRight: true,
     showTag: false,
-    bg: "linear-gradient(135deg, #832d74, #e63be1, #FF98E5, #d25eb3)",
+    glow: "rgba(236, 72, 153, 0.40)", // pink
   },
 ];
 
@@ -54,7 +54,6 @@ function FeatureRow({ row }) {
 
         {/* TEXT */}
         <div className="text">
-          {row.showTag && <span className="tag">Product Overview</span>}
 
           <h3>{row.heading}</h3>
           <p>{row.desc}</p>
@@ -71,9 +70,10 @@ function FeatureRow({ row }) {
 
         {/* IMAGE */}
         <div className="image">
+          {/* glow blob */}
           <div
-            className="img-bg"
-            style={{ background: row.bg }}
+            className="imgGlow"
+            style={{ backgroundColor: row.glow }}
           />
           <img src={row.img} alt={row.heading} />
         </div>
@@ -258,22 +258,26 @@ export default function ProductOverview() {
           min-height:420px;
         }
 
-        .img-bg{
-          position: absolute;
-          inset: 40px;
-          border-radius: 24px;
-          filter: blur(40px);
-          opacity: 0.7;
-          z-index: 0;
-      }
+       /* THIS is the key Framer trick */
+.imgGlow{
+  position: absolute;
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.9;
+  transform: scale(1.3);
+  z-index: 0;
+}
 
-        .image img{
-          width:100%;
-          height:100%;
-          object-fit:cover;
-          display:block;
-          will-change:transform;
-        }
+/* image sits above glow */
+.image img{
+  position: relative;
+  z-index: 2;
+  width: 85%;
+  object-fit: contain;
+  filter: drop-shadow(0 30px 60px rgba(0,0,0,0.2));
+}
 
         @media(max-width:768px){
           .feature-grid{
@@ -284,7 +288,13 @@ export default function ProductOverview() {
             font-size:34px;
           }
 
+          img{
+          order: -1;
+            width:100%;
+          }
+
           .text{
+          order: 1;
             padding:40px 24px;
           }
         }
