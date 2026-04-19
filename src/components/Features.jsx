@@ -1,247 +1,109 @@
-import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 
-const rows = [
+const cards = [
   {
-    heading: "Seamless Data Integration Process",
-    desc: "Effortlessly connect with diverse data sources, ensuring smooth data flow for real-time insights and accurate analysis.",
-    points: [
-      { icon: "🗄", label: "Unified Data Connections" },
-      { icon: "🔄", label: "Real-Time Data Syncing" },
-      { icon: "🔌", label: "Flexible API Integrations" },
-    ],
-    img: "https://framerusercontent.com/images/ZHxn4x0VKrIK8kMprl2U0prVPrs.png",
-    bg: "linear-gradient(135deg, #AA70FF 0%, #F7D5FF 100%)",
+    title: "Adaptive Learning",
+    description:
+      "AI that evolves with your data, continuously improving performance and adapting to new patterns.",
+    image:
+      "https://framerusercontent.com/images/qGFZyeulSY1zsGefM4aAo6C78.png",
+    aspect: "2/1",
   },
   {
-    heading: "Advanced AI-Powered Analytics Tools",
-    desc: "Leverage intelligent analytics to uncover hidden patterns, predict future trends, and make data-driven decisions with confidence.",
-    points: [
-      { icon: "📈", label: "Accurate Trend Forecasting" },
-      { icon: "📊", label: "Dynamic Insightful Dashboards" },
-      { icon: "🤖", label: "AI-Driven Data Metrics" },
-    ],
-    img: "https://framerusercontent.com/images/yudPladgzJSykTseWh34MLSt0.png",
-    bg: "linear-gradient(135deg, #9AC5FF 0%, #e9e9e9 100%)",
+    title: "Smart Automation",
+    description:
+      "Empowering you with AI-driven workflows designed to simplify operations and enhance productivity.",
+    image:
+      "https://framerusercontent.com/images/bRTZAw3dzeV7NnHfnXVd2Xc.png",
+    aspect: "4/3",
   },
   {
-    heading: "Intelligent Automation Workflow Engine",
-    desc: "Automate repetitive tasks, optimize workflows, and boost productivity with smart, AI-powered automation capabilities.",
-    points: [
-      { icon: "⚙️", label: "Streamlined Workflow Automation" },
-      { icon: "✅", label: "Efficient Task Optimization" },
-      { icon: "⚡", label: "Smart Trigger Functions" },
-    ],
-    img: "https://framerusercontent.com/images/N4vCtjk9YHrPSVPINwtdHZjU.png",
-    bg: "linear-gradient(135deg, #FF8AFD 0%, #e0e0e0 100%)",
+    title: "Outbound Outreach",
+    description:
+      "Personalize campaigns at scale, qualify leads instantly, and close deals faster with AI-driven engagement.",
+    image:
+      "https://framerusercontent.com/images/L9fccHnZ9UNo9nSWJ1myp0Q0.png",
+    aspect: "4/3",
+  },
+  {
+    title: "Predictive Analytics",
+    description:
+      "Harness advanced models to forecast trends, uncover insights and stay ahead of the competition.",
+    image:
+      "https://framerusercontent.com/images/fWv8t6fM6yzVYNiHLxm6JJ0QQ.png",
+    aspect: "2/1",
   },
 ];
 
-function FeatureRow({ row, index }) {
-  const imgRef = useRef(null);
+const aspectMap = {
+  "2/1": "aspect-[2/1]",
+  "4/3": "aspect-[4/3]",
+};
 
-  useEffect(() => {
-    let raf;
-    let current = 0;
-    let target = 0;
-
-    const animate = () => {
-      const img = imgRef.current;
-      if (!img) return;
-
-      const rect = img.parentElement?.getBoundingClientRect();
-      const vh = window.innerHeight;
-
-      target = ((rect?.top ?? 0) - vh * 0.5) / vh;
-      current += (target - current) * 0.08;
-
-      const speed = 1 + index * 0.3;
-
-      img.style.transform = `scale(1.02)`;
-
-      raf = requestAnimationFrame(animate);
-    };
-
-    raf = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(raf);
-  }, [index]);
-
-  // layout rule
-  const isEven = index % 2 === 1;
-
+function Card({ card }) {
   return (
-    <div
-      style={{
-        marginBottom: 140,
-        position: "relative",
-        zIndex: 10 - index,
-      }}
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+      className="rounded-2xl overflow-hidden border border-gray-200 bg-white shadow-sm hover:shadow-lg"
     >
-      <div
-        className="feature-card"
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          minHeight: 440,
-          borderRadius: 12,
-          overflow: "hidden",
-          boxShadow: "0 20px 60px rgba(0,0,0,0.07)",
-          background: "#fff",
-          transform: `translateY(${index * 40}px)`,
-          position: "relative",
-          transition: "transform 0.6s ease",
-        }}
-      >
-
-        {/* TEXT */}
-        <div
-          style={{
-            order: isEven ? 2 : 1,
-            padding: "60px 56px",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-          }}
-        >
-          <h3 style={{
-            fontSize: "clamp(22px, 2.8vw, 34px)",
-            fontWeight: 800,
-            marginBottom: 14,
-            color: "#0a0a0a",
-          }}>
-            {row.heading}
-          </h3>
-
-          <p style={{ color: "#666", marginBottom: 28, lineHeight: 1.7 }}>
-            {row.desc}
-          </p>
-
-          <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-            {row.points.map((p) => (
-              <div key={p.label} style={{ display: "flex", gap: 12, alignItems: "center" }}>
-                <div style={{
-                  width: 36,
-                  height: 36,
-                  background: "#eee",
-                  borderRadius: 10,
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}>
-                  {p.icon}
-                </div>
-                <span style={{ fontSize: 14, fontWeight: 500 }}>
-                  {p.label}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* IMAGE SIDE ONLY BG */}
-        <div
-          style={{
-            order: isEven ? 1 : 2,
-            background: row.bg,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            overflow: "visible",
-            position: "sticky",
-            top: 80,
-            padding: "40px",
-            boxSizing: "border-box",
-          }}
-        >
-          <img
-            ref={imgRef}
-            src={row.img}
-            alt=""
-            style={{
-              width: "100%",
-              maxWidth: "420px",
-              objectFit: "contain",
-              willChange: "transform",
-              borderRadius: "12px",
-            }}
-          />
-        </div>
+      {/* IMAGE */}
+      <div className={`relative ${aspectMap[card.aspect]} bg-gray-50 overflow-hidden`}>
+        <img
+          src={card.image}
+          alt={card.title}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
       </div>
 
-      {/* MOBILE FIX */}
-      <style>{`
-        @media (max-width: 768px) {
-          .feature-card {
-            grid-template-columns: 1fr !important;
-          }
-
-          .feature-card > div {
-            order: unset !important;
-          }
-
-          .feature-card img {
-            width: 100% !important;
-            margin-top: 20px;
-          }
-        }
-      `}</style>
-    </div>
+      {/* CONTENT */}
+      <div className="p-6">
+        <h3 className="text-lg font-semibold text-gray-900">
+          {card.title}
+        </h3>
+        <p className="text-sm text-gray-500 mt-2">
+          {card.description}
+        </p>
+      </div>
+    </motion.div>
   );
 }
 
-export default function ProductOverview() {
+export default function BuildSection() {
   return (
-    <section
-      id="feature"
-      style={{
-        width: "100%",
-        padding: "100px 16px 200px",
-        background: "#fff",
-        position: "relative",
-        overflow: "visible",
-      }}
-    >
-      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+    <section className="py-28 bg-white">
+      <div className="max-w-[1180px] mx-auto px-6">
+
         {/* Header */}
-        <div style={{ textAlign: "center", marginBottom: 72 }}>
-          <span className="badge">Product Overview</span>
-          <h2 style={{
-            fontFamily: "'Bricolage Grotesque', sans-serif",
-            fontSize: "clamp(32px, 4vw, 54px)",
-            fontWeight: 800,
-            margin: "18px 0 14px",
-            color: "#0a0a0a",
-            letterSpacing: "-0.02em",
-          }}>
-            Explore the Power of Fluence AI
+        <div className="text-center mb-16">
+          <span className="badge">Business & Solution</span>
+
+          <h2 className="mt-5 text-4xl md:text-5xl font-semibold leading-tight">
+            Build, Deploy and Scale <br /> Your Entire AI Workforce
           </h2>
-          <p style={{ maxWidth: 520, margin: "0 auto", color: "#666", fontSize: 16, lineHeight: 1.65 }}>
-            Discover how Fluence AI transforms raw data into actionable insights.
-            Our advanced features are designed to optimize workflows.
+
+          <p className="text-gray-500 mt-5 max-w-[520px] mx-auto">
+            Fluence AI helps you connect, manage, and optimize your AI tools effortlessly.
           </p>
         </div>
 
-        {/* Sticky stack */}
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          {rows.map((row, i) => (
-            <FeatureRow key={i} row={row} index={i} />
-          ))}
+        {/* GRID */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+          <div className="grid gap-6">
+            <Card card={cards[0]} />
+            <Card card={cards[1]} />
+          </div>
+
+          <div className="grid gap-6">
+            <Card card={cards[2]} />
+            <Card card={cards[3]} />
+          </div>
+
         </div>
+
       </div>
     </section>
   );
 }
-<style>{`
-@media (max-width: 768px) {
-  .feature-card {
-    grid-template-columns: 1fr !important;
-  }
-
-  .feature-card > div:nth-child(1) {
-    order: 2 !important;
-  }
-
-  .feature-card > div:nth-child(2) {
-    order: 1 !important;
-  }
-}
-`}</style>
