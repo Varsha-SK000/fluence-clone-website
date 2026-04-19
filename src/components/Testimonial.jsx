@@ -255,7 +255,7 @@ function CountUp({ target, suffix, start }) {
   }, [start, target]);
 
   return (
-    <h3
+    <span
       style={{
         fontFamily: "'Bricolage Grotesque', sans-serif",
         fontSize: 44,
@@ -266,7 +266,7 @@ function CountUp({ target, suffix, start }) {
     >
       {count.toLocaleString()}
       {suffix}
-    </h3>
+    </span>
   );
 }
 
