@@ -35,6 +35,11 @@ const cards = [
   },
 ];
 
+const aspectMap = {
+  "2/1": "aspect-[2/1]",
+  "4/3": "aspect-[4/3]",
+};
+
 function Card({ card }) {
   return (
     <motion.div
@@ -44,11 +49,11 @@ function Card({ card }) {
       className="rounded-2xl overflow-hidden border border-gray-200 bg-white shadow-sm hover:shadow-lg"
     >
       {/* IMAGE */}
-      <div className={`relative aspect-[${card.aspect}] bg-gray-50`}>
+      <div className={`relative ${aspectMap[card.aspect]} bg-gray-50`}>
         <img
           src={card.image}
           alt={card.title}
-          className="absolute inset-0 w-full h-full object-cover p-6"
+          className="absolute inset-0 w-full h-full object-cover"
         />
       </div>
 
@@ -83,22 +88,21 @@ export default function BuildSection() {
           </p>
         </div>
 
-        {/* 🔥 CROSS ASYMMETRIC GRID */}
+        {/* GRID */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-          {/* LEFT COLUMN */}
           <div className="grid gap-6">
-            <Card card={cards[0]} /> {/* 2:1 */}
-            <Card card={cards[1]} /> {/* 1:2 */}
+            <Card card={cards[0]} />
+            <Card card={cards[1]} />
           </div>
 
-          {/* RIGHT COLUMN */}
           <div className="grid gap-6">
-            <Card card={cards[2]} /> {/* 1:2 */}
-            <Card card={cards[3]} /> {/* 2:1 */}
+            <Card card={cards[2]} />
+            <Card card={cards[3]} />
           </div>
 
         </div>
+
       </div>
     </section>
   );
