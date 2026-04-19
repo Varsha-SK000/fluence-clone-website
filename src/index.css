@@ -2,13 +2,19 @@
 
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
 }
 
 /* ── FONTS ── */
 :root {
-  --font-display: 'Bricolage Grotesque', sans-serif;
-  --font-body: 'Inter', sans-serif;
+  --font-display: 'Fame', sans-serif;
+  --font-body: 'Fame', sans-serif;
+  --font-fame: 'Fame', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-body);
+  font-weight: 400;
 }
 
 *,
@@ -126,7 +132,6 @@ body {
   /* 🔥 bigger text */
   font-weight: 600;
   color: #1b0c26;
-  font-family: 'Bricolage Grotesque', sans-serif;
 }
 
 .ticker-icon {

@@ -127,9 +127,8 @@ export default function HowItWorks() {
 
             <h2
               style={{
-                fontFamily: "'Bricolage Grotesque', sans-serif",
                 fontWeight: 800,
-                fontSize: "clamp(26px, 3.2vw, 44px)",
+                fontSize: "clamp(26px, 3.2vw, 44px)", 
                 color: "#0a0a0a",
                 lineHeight: 1.12,
                 letterSpacing: "-0.025em",
@@ -217,7 +216,7 @@ export default function HowItWorks() {
               <div style={{ height: 210, background: step.bg }}>{step.visual}</div>
               <div style={{ padding: "22px 26px 28px" }}>
                 <h4 style={{
-                  fontFamily: "'Bricolage Grotesque', sans-serif", fontWeight: 700,
+                  fontWeight: 700,
                   fontSize: 20, color: "#0a0a0a", marginBottom: 8,
                 }}>
                   {step.title}

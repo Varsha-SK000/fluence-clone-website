@@ -257,7 +257,6 @@ function CountUp({ target, suffix, start }) {
   return (
     <span
       style={{
-        fontFamily: "'Bricolage Grotesque', sans-serif",
         fontSize: 44,
         fontWeight: 800,
         color: "#0a0a0a",

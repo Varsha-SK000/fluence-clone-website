@@ -3,8 +3,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        display: ["'Bricolage Grotesque'", "sans-serif"],
-        body: ["'Inter'", "sans-serif"],
+        display: ["'Fame'", "sans-serif"],
+        body: ["'Fame'", "sans-serif"],
+        fame: ["'Fame'", "sans-serif"],
       },
     },
   },

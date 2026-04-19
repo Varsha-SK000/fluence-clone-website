@@ -43,7 +43,7 @@ export default function FAQ() {
             <span className="badge">FAQ</span>
 
             <h2 style={{
-              fontFamily: "'Bricolage Grotesque', sans-serif", fontWeight: 800,
+              fontWeight: 800,
               fontSize: "clamp(22px, 2.8vw, 34px)", color: "#0a0a0a",
               lineHeight: 1.18, margin: "18px 0 24px", letterSpacing: "-0.02em",
             }}>
@@ -101,7 +101,7 @@ export default function FAQ() {
                   >
                     <h4 style={{
                       fontSize: 16, fontWeight: 600, color: "#1b0c25",
-                      fontFamily: "'Bricolage Grotesque', sans-serif", margin: 0,
+                      margin: 0,
                     }}>
                       {item.question}
                     </h4>

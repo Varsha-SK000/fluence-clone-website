@@ -65,7 +65,6 @@ export default function Pricing() {
           <h2
             style={{
               marginTop: 18,
-              fontFamily: "'Bricolage Grotesque', sans-serif",
               fontSize: "clamp(32px, 4vw, 54px)",
               lineHeight: 1.05,
               fontWeight: 800,
@@ -214,7 +213,6 @@ export default function Pricing() {
                     fontSize: 20,
                     fontWeight: 700,
                     margin: 0,
-                    fontFamily: "'Bricolage Grotesque', sans-serif",
                   }}
                 >
                   {plan.name}
@@ -238,7 +236,6 @@ export default function Pricing() {
                   style={{
                     fontSize: 36,
                     fontWeight: 400,
-                    fontFamily: "'Bricolage Grotesque', sans-serif",
                     color: "#0a0a0a",
                   }}
                 >

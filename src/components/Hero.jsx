@@ -116,7 +116,6 @@ export default function Hero() {
                 animate="visible"
                 className="font-bold text-black mb-5 leading-[1.05] tracking-tight"
                 style={{
-                  fontFamily: "'Bricolage Grotesque', sans-serif",
                   fontSize: "clamp(32px, 7vw, 72px)",
                 }}
               >

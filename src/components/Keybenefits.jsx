@@ -92,7 +92,6 @@ function SecurityCard() {
         <div style={{ maxWidth: 420 }}>
           <h4
             style={{
-              fontFamily: "'Bricolage Grotesque', sans-serif",
               fontSize: 22,
               fontWeight: 700,
               marginBottom: 10,
@@ -168,7 +167,6 @@ export default function KeyBenefits() {
         <div style={{ textAlign: "center", marginBottom: 70 }}>
           <span className="badge">Key Benefits</span>
           <h2 style={{
-            fontFamily: "'Bricolage Grotesque', sans-serif",
             fontSize: "clamp(32px, 4vw, 54px)",
             fontWeight: 800,
             marginTop: 14,

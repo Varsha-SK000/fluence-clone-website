@@ -28,7 +28,6 @@ export default function NotFound() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           style={{
-            fontFamily: "'Bricolage Grotesque', sans-serif",
             fontSize: "clamp(100px, 18vw, 200px)",
             fontWeight: 900, letterSpacing: "-0.05em", lineHeight: 1, margin: 0,
           }}

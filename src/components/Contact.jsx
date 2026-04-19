@@ -127,7 +127,7 @@ export default function Contact() {
                       <path d="M20 6L9 17l-5-5" />
                     </svg>
                   </div>
-                  <h3 style={{ fontFamily: "'Bricolage Grotesque', sans-serif", fontSize: 24, fontWeight: 800 }}>
+                  <h3 style={{ fontSize: 24, fontWeight: 800 }}>
                     Message sent!
                   </h3>
                   <p style={{ color: "#777", fontSize: 15 }}>We'll get back to you within 24 hours.</p>

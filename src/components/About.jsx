@@ -56,7 +56,6 @@ export default function About() {
         <h2
           className="flex flex-wrap"
           style={{
-            fontFamily: "'Bricolage Grotesque', sans-serif",
             fontWeight: 600,
             fontSize: "clamp(24px, 3.2vw, 48px)",
             lineHeight: 1.35,
