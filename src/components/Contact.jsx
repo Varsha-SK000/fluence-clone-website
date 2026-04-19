@@ -62,23 +62,23 @@ export default function Contact() {
                   Feel free to reach out — we'd love to connect and explore how Fluence AI can help your team.
                 </p>
 
-                <div style={{ display: "flex", gap: 30, alignItems: "flex-start" }}>
+                <div style={{ display: "flex", gap: 8, alignItems: "flex-start", flexWrap: "wrap", minWidth: 0 }}>
                   <div style={{
                     width: 42, height: 42, background: "#f5f5f5", borderRadius: 10,
                     display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, flexShrink: 0,
                   }}>✉️</div>
-                  <div>
+                  <div style={{ minWidth: 0 }}>
                     <p style={{ fontWeight: 600, fontSize: 14, marginBottom: 4 }}>Email us</p>
                     <a href="mailto:hello@fluence.ai" style={{ color: "#666", fontSize: 14, textDecoration: "underline" }}>
                       hello@fluence.ai
                     </a>
                   </div>
-                  <div style={{ display: "flex", gap: 5, alignItems: "flex-start" }}>
+                  <div style={{ display: "flex", gap: 8, alignItems: "flex-start", flexWrap: "wrap", minWidth: 0 }}>
                     <div style={{
                       width: 42, height: 42, background: "#f5f5f5", borderRadius: 10,
                       display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, flexShrink: 0,
                     }}>💬</div>
-                    <div>
+                    <div style={{ minWidth: 0 }}>
                       <p style={{ fontWeight: 600, fontSize: 14, marginBottom: 4 }}>Get support</p>
                       <a href="#" style={{ color: "#666", fontSize: 14, textDecoration: "underline" }}>Chat with us</a>
                     </div>
